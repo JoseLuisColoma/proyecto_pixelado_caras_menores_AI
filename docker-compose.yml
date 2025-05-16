@@ -1,0 +1,50 @@
+
+version: '3.8'
+
+services:
+  api_gateway:
+    build: ./api_gateway
+    ports:
+      - "5000:5000"
+    depends_on:
+      - engine
+    networks:
+      - faceblur-net
+    volumes:
+      - ./shared:/shared
+
+  engine:
+    build: ./engine
+    depends_on:
+      - bounding
+      - classifier
+      - pixelator
+    networks:
+      - faceblur-net
+    volumes:
+      - ./shared:/shared
+
+  bounding:
+    build: ./bounding
+    ports:
+      - "5001:5001"
+    networks:
+      - faceblur-net
+
+  classifier:
+    build: ./classifier
+    ports:
+      - "5002:5002"
+    networks:
+      - faceblur-net
+
+  pixelator:
+    build: ./pixelator
+    ports:
+      - "5003:5003"
+    networks:
+      - faceblur-net
+
+networks:
+  faceblur-net:
+    driver: bridge

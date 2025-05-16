@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pixelado de Caras de Menores con IA</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='imgs/favicon.ico') }}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div class="app__header-left">
+          <img
+            src="{{ url_for('static', filename='imgs/baby-icon-blurred.png') }}"
+            alt="Logo app"
+            class="app__logo"
+          />
+        </div>
+        <div class="app__header-center">
+          <h1 class="app__title">Pixelado de Caras de Menores con IA</h1>
+        </div>
+        <div class="app__header-right">
+          <img
+            src="{{ url_for('static', filename='imgs/mislata2.png') }}"
+            alt="Mislata Logo"
+            class="app__logo"
+          />
+        </div>
+      </header>
+
+      <div class="app__layout">
+        <aside class="sidebar">
+          <h2 class="sidebar__title">Visualizaciones</h2>
+          <button class="sidebar__button">Modelos</button>
+          <button class="sidebar__button">Métricas</button>
+          <button class="sidebar__button">Comparativa</button>
+        </aside>
+
+        <main class="main">
+          <section class="upload">
+            <input
+              type="file"
+              id="imageInput"
+              accept="image/*"
+              class="upload__file"
+            />
+            <button onclick="uploadImage()" class="upload__button">
+              Procesar Imagen
+            </button>
+          </section>
+
+          <section id="result" class="result">
+            <p id="status" class="result__status"></p>
+            <img
+              id="outputImage"
+              src=""
+              alt="Imagen procesada"
+              class="result__image"
+              style="display: none"
+            />
+          </section>
+        </main>
+      </div>
+
+      <footer class="app__footer">
+        <p>Proyecto IA Desarrollado por <b>Santiago Miquel Asensi</b> y <b>José Luis Coloma Tormo</b></p>
+        <p>2025 Inteligencia Artificial y Big Data - CIPFP Mislata</p>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
